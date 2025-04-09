@@ -19,11 +19,11 @@ export class ProductCardComponent {
   @Input()
   company!: string;
 
-  @Output()
-  isShowChange = new EventEmitter<boolean>();
-
   @Input({ transform: booleanAttribute })
   isShow!: boolean;
+
+  @Output()
+  isShowChange = new EventEmitter<boolean>();
 
   @Input()
   photoUrl!: string;
