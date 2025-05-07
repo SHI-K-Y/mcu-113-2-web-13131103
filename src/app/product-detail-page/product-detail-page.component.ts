@@ -1,8 +1,8 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject, input, numberAttribute, OnInit } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../models/product';
-import { ProductService } from './../services/product.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -10,25 +10,22 @@ import { ProductService } from './../services/product.service';
   templateUrl: './product-detail-page.component.html',
   styleUrl: './product-detail-page.component.scss',
 })
-export class ProductDetailPageComponent implements OnInit {
-  id = input.required<number, string | number>({ transform: numberAttribute });
+export class ProductDetailPageComponent {
+  readonly product = input.required<Product>();
 
-  product!: Product;
   readonly router = inject(Router);
 
-  readonly ProductService = inject(ProductService);
+  readonly productService = inject(ProductService);
 
-  ngOnInit(): void {
-    this.ProductService.getById(this.id()).subscribe((product) => (this.product = product));
-  }
   onEdit(): void {
-    this.router.navigate(['product', 'form', this.product.id]);
+    this.router.navigate(['product', 'form', this.product().id]);
   }
 
   onRemove(): void {
-    this.ProductService.remove(this.product.id);
+    this.productService.remove(this.product().id);
     this.router.navigate(['products']);
   }
+
   onBack(): void {
     this.router.navigate(['products']);
   }
