@@ -119,10 +119,10 @@
       "authors": [
         "ABC"
       ],
-      "price": 100,
+      "price": 1000,
       "isShow": true,
       "photoUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
-      "createDate": "2025-05-21T10:34:03.205Z"
+      "createDate": "2025-05-21T10:59:45.341Z"
     }
   ]
 }
